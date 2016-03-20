@@ -4,18 +4,20 @@ This is the github repository for https://hub.docker.com/r/adamoss/john-the-ripp
 USAGE
 =========  
 ## YOU NEED TO MOUNT THE FILE YOU WISH TO CRACK USING -v
-### DOCKER CANNOT MAGICALLY READ THE HOST FILE SYSTEM SO PLEASE REMEMBER TO PASS THE MOUNTS TO THE CONTAINER
+
+##### DOCKER CANNOT MAGICALLY READ THE HOST FILE SYSTEM SO PLEASE REMEMBER TO PASS THE MOUNTS TO THE CONTAINER
 
 ``` 
 docker run -it -v `pwd`/yourfiletocrack:/crackme.txt adamoss/john-the-ripper /crackme.txt
 ```
-### in the above example docker is mounting your file to crack inside the container as /crackme.txt then it passes /crackme.txt to john
+##### in the above example docker is mounting your file to crack inside the container as /crackme.txt then it passes /crackme.txt to john
 
+##### wordlist rockyou.txt is in /usr/share/wordlists/rockyou.txt so you can pass options to john at will
 ```
-docker run -it -v `pwd`/yourfiletocrack:/crackme.txt adamoss/john-the-ripper /crackme.txt
+docker run -it -v `pwd`/yourfiletocrack:/crackme.txt adamoss/john-the-ripper --wordlist /usr/share/wordlists/rockyou.txt /crackme.txt
 ```
 
-## if you want to enter without launching john 
+##### if you want to enter without launching john 
 ```
 docker run -it adamoss/john-the-ripper /bin/bash
 ```
